@@ -124,7 +124,7 @@ def predict_house_area(room_id, excel_file, image_files):
 inputs = [
     gr.inputs.Textbox(label = "Mã Phòng" , type = "text"),
     gr.inputs.File(label="Excel File", type="file"),
-    gr.inputs.File(label="Images", type="file", file_count="multiple")
+    gr.inputs.Image(label="Images", type="file", file_count="multiple")
 ]
 
 outputs = [
