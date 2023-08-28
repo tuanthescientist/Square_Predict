@@ -124,12 +124,13 @@ def predict_house_area(room_id, excel_file, image_files):
 inputs = [
     gr.inputs.Textbox(label = "Mã Phòng" , type = "text"),
     gr.inputs.File(label="Excel File", type="file"),
-    gr.inputs.Image(label="Images", type="file", file_count="multiple")
+    gr.inputs.File(label="Images", type="file", file_count="multiple")
 ]
 
 outputs = [
     gr.outputs.Textbox(label="Sum of Predicted House Square Footage"),
-    gr.outputs.File(label="Excel Result")
+    gr.outputs.File(label="Excel Result"),
+    gr.outputs.Image(label="Uploaded Image")
 ]
 
 interface = gr.Interface(
