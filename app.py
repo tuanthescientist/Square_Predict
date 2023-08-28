@@ -129,8 +129,7 @@ inputs = [
 
 outputs = [
     gr.outputs.Textbox(label="Sum of Predicted House Square Footage"),
-    gr.outputs.File(label="Excel Result"),
-    gr.outputs.Image(label="Uploaded Image")
+    gr.outputs.File(label="Excel Result")
 ]
 
 interface = gr.Interface(
