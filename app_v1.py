@@ -20,7 +20,7 @@ transform = transforms.Compose([
     transforms.Normalize(mean=[0.485, 0.456, 0.406],
                          std=[0.229, 0.224, 0.225])
 ])
-def predict_house_area(room_id, excel_file, image_files):
+def predict_house_area(excel_file, image_files):
     total_area_sqm = 0
     predicted_areas = []
 
@@ -35,9 +35,8 @@ def predict_house_area(room_id, excel_file, image_files):
         worksheet = workbook.active
 
         # Write the headers to the worksheet
-        worksheet.cell(row=1, column=1).value = "Room ID"
-        worksheet.cell(row=1, column=2).value = "Image File"
-        worksheet.cell(row=1, column=3).value = "Predicted Area (sqm)"
+        worksheet.cell(row=1, column=1).value = "Image File"
+        worksheet.cell(row=1, column=2).value = "Predicted Area (sqm)"
 
     # Get the last row index to append new data
     last_row_index = worksheet.max_row if worksheet.max_row else 1
@@ -110,9 +109,8 @@ def predict_house_area(room_id, excel_file, image_files):
         predicted_areas.append(predicted_area_sqm)
 
         # Write the room ID, image file name, and predicted area to the worksheet
-        worksheet.cell(row=last_row_index + i + 1, column=1).value = room_id
-        worksheet.cell(row=last_row_index + i + 1, column=2).value = image_file_name
-        worksheet.cell(row=last_row_index + i + 1, column=3).value = predicted_area_sqm
+        worksheet.cell(row=last_row_index + i + 1, column=1).value = image_file_name
+        worksheet.cell(row=last_row_index + i + 1, column=2).value = predicted_area_sqm
 
     # Save the workbook to a temporary file
     temp_file = "predicted_areas.xlsx"
@@ -125,7 +123,6 @@ def predict_house_area(room_id, excel_file, image_files):
 
 
 inputs = [
-    gr.inputs.Textbox(label = "Mã Phòng" , type = "text"),
     gr.inputs.File(label="Excel File", type="file"),
     gr.inputs.File(label="Images", type="file", file_count="multiple")
 ]
