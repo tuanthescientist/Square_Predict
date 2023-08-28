@@ -118,7 +118,10 @@ def predict_house_area(room_id, excel_file, image_files):
     temp_file = "predicted_areas.xlsx"
     workbook.save(temp_file)
 
-    return f"Sum of predicted house square footage: {total_area_sqm:.2f} square meters", temp_file
+    # Get the path of the first uploaded image
+    first_image_path = image_files[0].name if image_files else None
+
+    return f"Sum of predicted house square footage: {total_area_sqm:.2f} square meters", temp_file ,first_image_path
 
 
 inputs = [
@@ -129,7 +132,8 @@ inputs = [
 
 outputs = [
     gr.outputs.Textbox(label="Sum of Predicted House Square Footage"),
-    gr.outputs.File(label="Excel Result")
+    gr.outputs.File(label="Excel Result"),
+    gr.outputs.Image(type="pil", label="Uploaded Image")
 ]
 
 interface = gr.Interface(
