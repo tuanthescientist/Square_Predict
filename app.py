@@ -76,13 +76,12 @@ def predict_house_area(image_file):
     worksheet.cell(row=2, column=1).value = image_file_name
     worksheet.cell(row=2, column=2).value = predicted_area_sqm
 
-    temp_file = f"predicted_area_{room_id}.xlsx"
+    temp_file = "predicted_area.xlsx"
     workbook.save(temp_file)
 
     return f"Predicted house square footage: {predicted_area_sqm:.2f} square meters", temp_file
 
 inputs = [
-    gr.inputs.Textbox(label="Mã Phòng", type="text"),
     gr.inputs.Image(label="Image")
 ]
 
