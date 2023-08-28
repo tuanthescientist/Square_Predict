@@ -87,14 +87,14 @@ inputs = [
 
 outputs = [
     gr.outputs.Textbox(label="Predicted House Square Footage"),
-    gr.outputs.File(label="Excel Result"),
+    gr.outputs.File(label="Excel Printed Result"),
 ]
 
 interface = gr.Interface(
     fn=predict_house_area,
     inputs=inputs,
     outputs=outputs,
-    title="House Predictor",
+    title="House Square Predictor",
     allow_flagging="never"  # Disable flag button
 )
 
