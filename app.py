@@ -20,7 +20,7 @@ transform = transforms.Compose([
                          std=[0.229, 0.224, 0.225])
 ])
 
-def predict_house_area(room_id, image_file):
+def predict_house_area(image_file):
     total_area_sqm = 0
     predicted_areas = []
     
@@ -71,12 +71,10 @@ def predict_house_area(room_id, image_file):
 
     workbook = openpyxl.Workbook()
     worksheet = workbook.active
-    worksheet.cell(row=1, column=1).value = "Room ID"
-    worksheet.cell(row=1, column=2).value = "Image File"
-    worksheet.cell(row=1, column=3).value = "Predicted Area (sqm)"
-    worksheet.cell(row=2, column=1).value = room_id
-    worksheet.cell(row=2, column=2).value = image_file_name
-    worksheet.cell(row=2, column=3).value = predicted_area_sqm
+    worksheet.cell(row=1, column=1).value = "Image File"
+    worksheet.cell(row=1, column=2).value = "Predicted Area (sqm)"
+    worksheet.cell(row=2, column=1).value = image_file_name
+    worksheet.cell(row=2, column=2).value = predicted_area_sqm
 
     temp_file = f"predicted_area_{room_id}.xlsx"
     workbook.save(temp_file)
